@@ -49,4 +49,26 @@ def some_func():
 some_func()
 
 
+print('-*-'*12)
 
+def decorator_create():
+    print("1.This function create decorator.")
+    
+    def make_decorator(func):
+        print("3.This function is decorator")
+
+        def wrapper():
+            print("5.This is wrapper for our function")
+            func()
+            print("7.End of wrapper function")
+
+        print("4.End decorator")
+        return wrapper
+    print("2.REturn decorator")
+    return make_decorator
+
+@decorator_create()
+def myfunc():
+    print("6.This is my function")
+
+myfunc()
