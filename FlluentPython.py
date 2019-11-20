@@ -82,32 +82,56 @@ def class_vector():
 
 
 def praxis_Calculator():
-    import random
+    import numpy as np
     import functools
 
-    
-    class Calculator:
-        def __init__():
-            pass
+    def log(func):
+        @functools.wraps(func)
+        def wrapper(arg1, arg2):
+            print('-'*15)
+            print("Result function with name : {}. Result: {}".format(func.__name__ ,func(arg1, arg2)))
+            print("Argument1 = {}. Argument2 = {}".format(arg1, arg2))
+            print('-'*15)
+        return wrapper
 
-        def sum(self, a, b):
+
+    class Calculator:
+        def __init__(self):
+            pass
+        
+        @log
+        def sum(a, b):
             return a + b
 
-        def multiply(self, a, b):
+        @log
+        def multiply(a, b):
             return a * b
 
-        def divide(self, a, b):
+        @log
+        def divide(a, b):
             try:
                 return a / b
             except ZeroDivisionError:
                 return "Second arg is zero!"
         
-        def subtract(self, a, b):
+        @log
+        def subtract(a, b):
             return a - b
 
 
-    class Test:
-        x = Calculator()
+    def Testing():
+        testing = np.random.random(10) * 100 - 50
+        for i in range(0, len(testing)-1, 2):
+            Calculator.sum(*testing[i:i+2])
+            Calculator.multiply(*testing[i:i+2])
+            Calculator.subtract(*testing[i:i+2])
+            Calculator.divide(*testing[i:i+2])
+    Testing()
+praxis_Calculator()
+
+
+
+
 
 def learn_Logging():
     import logging
@@ -121,5 +145,3 @@ def learn_Logging():
     logging.error(u'This is error message')
     logging.critical(u'Fatal')
     logging.debug(u'This is a debug message')
-
-learn_Logging()
