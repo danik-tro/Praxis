@@ -79,3 +79,47 @@ def class_vector():
 
     test_for_vector()
     #43 page of book Fluent Python
+
+
+def praxis_Calculator():
+    import random
+    import functools
+
+    
+    class Calculator:
+        def __init__():
+            pass
+
+        def sum(self, a, b):
+            return a + b
+
+        def multiply(self, a, b):
+            return a * b
+
+        def divide(self, a, b):
+            try:
+                return a / b
+            except ZeroDivisionError:
+                return "Second arg is zero!"
+        
+        def subtract(self, a, b):
+            return a - b
+
+
+    class Test:
+        x = Calculator()
+
+def learn_Logging():
+    import logging
+
+    logging.basicConfig(level = logging.DEBUG)#До первого вызова ошибки
+    logging.basicConfig(format = u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s', level = logging.DEBUG)
+    
+    logging.debug(u"This is a debug message")
+    logging.info(u'This is info message')
+    logging.warning(u'This is warning message')
+    logging.error(u'This is error message')
+    logging.critical(u'Fatal')
+    logging.debug(u'This is a debug message')
+
+learn_Logging()
