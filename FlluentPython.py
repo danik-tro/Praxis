@@ -61,7 +61,11 @@ def class_vector():
         
         def __mul__(self, scalar):
             return Vector(self.x * scalar, self.y * scalar)
-        
+
+        def __rmul__(self, scalar):
+            return Vector(self.x * scalar, self.y * scalar)
+
+
     def test_for_vector():
         v = Vector(3,4)
         v_1 = Vector(5,5)
@@ -71,7 +75,7 @@ def class_vector():
         print(abs(v))
         print(abs(v + v_1))
         print(v * 5)
+        print(5 * v)
 
     test_for_vector()
-
-class_vector()
+    #43 page of book Fluent Python
