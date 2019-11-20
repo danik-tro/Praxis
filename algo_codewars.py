@@ -72,3 +72,26 @@ def myfunc():
     print("6.This is my function")
 
 myfunc()
+
+print('-*-'*12)
+"""
+! Create decorator with arguments
+"""
+
+def make_decorators_with_arg(decorator_arg1, decorator_arg2):
+    print("I'm creator decorator and I use this arg {}, {}".format(decorator_arg1, decorator_arg2))
+    def decorator(func):
+        print("I'm decorator and I can see arg from creator me {}, {}".format(decorator_arg1, decorator_arg2))
+        def wrapper(arg_func):
+            print("I can see all arg")
+            func(arg_func)
+            print("End")
+        return wrapper
+    return decorator
+
+@make_decorators_with_arg("arg_1","arg_2")
+def my_func_2(arg):
+    print("My arg is {}".format(arg))
+
+my_func_2("My arg")
+
