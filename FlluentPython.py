@@ -37,4 +37,41 @@ def colods_of_card():
     for card in sorted(deck, key=spades_high):
         print(card)
 
-colods_of_card()
+def class_vector():
+    from math import hypot
+
+    class Vector:
+        def __init__(self, x=0, y=0):
+            self.x = x
+            self.y = y
+
+        def __repr__(self):
+            return 'Vector({}, {})'.format(self.x, self.y)
+
+        def __abs__(self):
+            return hypot(self.x, self.y)
+
+        def __bool__(self):
+            return bool(abs(self))
+
+        def __add__(self, other):
+            x = self.x + other.x
+            y = self.y + other.y
+            return Vector(x, y)
+        
+        def __mul__(self, scalar):
+            return Vector(self.x * scalar, self.y * scalar)
+        
+    def test_for_vector():
+        v = Vector(3,4)
+        v_1 = Vector(5,5)
+
+        print(v, v_1)
+        print(v + v_1)
+        print(abs(v))
+        print(abs(v + v_1))
+        print(v * 5)
+
+    test_for_vector()
+
+class_vector()
