@@ -37,6 +37,7 @@ def colods_of_card():
     for card in sorted(deck, key=spades_high):
         print(card)
 
+
 def class_vector():
     from math import hypot
 
@@ -172,13 +173,48 @@ def tuples():
     from collections import namedtuple
     _, filename = os.path.split('C:/Users/Daniil Trotsenko/Documents/Educate/ML/Book/Plas_Python-dlya-slozhnyh-zadach.507605.pdf')
     print(_, filename, '\n','-'*100)
+
     City = namedtuple('City' , 'name country population coordinates')
     LatLong = namedtuple( 'LatLong', 'lat long')
+
     delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))
     delhi = City._make(delhi_data) # <=> City( *delhi_data )
+
+
     print(delhi)
     print(delhi._asdict())
     print('-'*100)
+
     for key, value in delhi._asdict().items():
         print(key + ':', value)
-tuples()
+
+def sorting():
+    fruits = ['apples', 'banannas', 'orange', 'tomato']
+    print( sorted(fruits, key=len) )
+    print(sorted(fruits, key=str.lower, reverse=True))
+
+def find_and_sorting():
+    import bisect
+    import sys
+
+    HATSTACK = [1, 4, 5, 6, 8, 12, 15, 20, 21, 23, 23, 26, 29, 30]
+    NEEDLES = [0, 1, 2, 5, 8, 10, 22, 23, 29, 30, 31]
+
+    ROW_FMT = '{0:2d} @ {1:2d} {2}{0:<2d}'
+
+    def demo(bisect_fn):
+        for needle in reversed(NEEDLES):
+            position = bisect_fn(HATSTACK, needle)
+            offset = position * " |"
+            print(ROW_FMT.format(needle, position, offset))
+
+    if __name__ == "__main__":
+        if sys.argv[-1] == 'left':
+            bisect_fn = bisect.bisect_left
+        else:
+            bisect_fn = bisect.bisect
+
+    print('DEMO:', bisect_fn.__name__)
+    print("haystack ->", ' '.join('%2d' % n for n in HATSTACK))
+    demo(bisect_fn)
+find_and_sorting()
