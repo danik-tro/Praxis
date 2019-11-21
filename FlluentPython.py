@@ -38,6 +38,13 @@ def colods_of_card():
         print(card)
 
 
+"""
+!value = SequenceMatcher(None, "rainn", "rain").ratio()
+!for find defferents with words
+!or
+!output = get_close_matches("rain", ["help","mate","rainy"], n=1, cutoff = 0.75)
+"""
+
 def class_vector():
     from math import hypot
 
