@@ -217,4 +217,11 @@ def find_and_sorting():
     print('DEMO:', bisect_fn.__name__)
     print("haystack ->", ' '.join('%2d' % n for n in HATSTACK))
     demo(bisect_fn)
-find_and_sorting()
+
+    def grade(score, breakpoints=[60, 70, 80, 90], grades='FDCBA'):
+        i = bisect.bisect(breakpoints, score)
+        return grades[i]
+
+    y = [grade(score) for score in [33, 99, 77, 70, 89, 90, 100]]
+    print(y)
+    #73 page of book fluent python
