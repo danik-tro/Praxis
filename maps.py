@@ -1,7 +1,18 @@
 import folium
 import pandas as pd
+from folium.plugins import MarkerCluster
+
 
 data = pd.read_csv("maps/data/Volcanoes_USA.txt")
+
+
+def color_change(evl):
+    if (evl < 1000):
+        return 'green'
+    elif 1000 <= evl < 3000:
+        return 'orange'
+    else:
+        return 'red' 
 
 lat = data['LAT']
 lon = data['LON']
@@ -15,6 +26,6 @@ maps = folium.Map(location=[50.4546600,30.5238000], zoom_start=8)
 """
 
 for lat_, lon_, elv_, name_ in zip(lat, lon, elevation, name):
-    folium.Marker(location=[lat_, lon_], popup=(name_ + "\n" + str(elv_) + " m"), icon=folium.Icon(color = 'gray')).add_to(maps)
+    folium.CircleMarker(location=[lat_, lon_],radius=9,  popup=(name_ + "\n" + str(elv_) + " m"), fill_color = color_change(elv_), color="gray", fill_opacity = 0.9).add_to(maps)
 
 maps.save('maps/maps1.html')
