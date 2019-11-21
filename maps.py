@@ -14,7 +14,7 @@ def color_change(evl):
     elif 1000 <= evl < 3000:
         return 'orange'
     else:
-        return 'red' 
+        return 'red'
 
 if __name__ == "__main__":
     data = pd.read_csv("maps/data/Volcanoes_USA.txt")
