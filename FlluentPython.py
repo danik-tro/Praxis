@@ -126,9 +126,8 @@ def praxis_Calculator():
             Calculator.multiply(*testing[i:i+2])
             Calculator.subtract(*testing[i:i+2])
             Calculator.divide(*testing[i:i+2])
+        Calculator.divide(4, 0)
     Testing()
-praxis_Calculator()
-
 
 
 
@@ -145,3 +144,41 @@ def learn_Logging():
     logging.error(u'This is error message')
     logging.critical(u'Fatal')
     logging.debug(u'This is a debug message')
+
+
+"""
+! New pages of book Fluent Python
+! 1.Cartesian product
+"""
+
+def cartesian_product():
+    import collections
+    Card = collections.namedtuple('Card', ['color', 'size'])
+    colors = ['black', 'white']
+    sizes = ['S', 'M', 'L']
+
+    tshirts = [Card(color, size) for color in colors for size in sizes]
+    print(tshirts)
+
+    """
+    ! Генераторные выражения
+    """
+    for tshirt in ('%s %s' % (c, s) for c in colors for s in sizes ):
+        print(tshirt)
+
+
+def tuples():
+    import os
+    from collections import namedtuple
+    _, filename = os.path.split('C:/Users/Daniil Trotsenko/Documents/Educate/ML/Book/Plas_Python-dlya-slozhnyh-zadach.507605.pdf')
+    print(_, filename, '\n','-'*100)
+    City = namedtuple('City' , 'name country population coordinates')
+    LatLong = namedtuple( 'LatLong', 'lat long')
+    delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))
+    delhi = City._make(delhi_data) # <=> City( *delhi_data )
+    print(delhi)
+    print(delhi._asdict())
+    print('-'*100)
+    for key, value in delhi._asdict().items():
+        print(key + ':', value)
+tuples()
