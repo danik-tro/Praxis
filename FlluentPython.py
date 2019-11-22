@@ -232,3 +232,76 @@ def find_and_sorting():
     y = [grade(score) for score in [33, 99, 77, 70, 89, 90, 100]]
     print(y)
     #73 page of book fluent python
+
+
+def sorting_and_insert():
+    import bisect
+    import random
+
+    SIZE = 7
+
+    random.seed(1729)
+
+    my_list = []
+    for i in range(SIZE):
+        new_item = random.randrange(SIZE*2)
+        bisect.insort(my_list, new_item)
+        print('%2d -> ' % new_item, my_list)
+
+def arrays():
+    from array import array
+    from random import random
+
+    floats  = array('d', (random() for i in range(10**7)))
+    print(floats[0])
+
+    """
+    ! Add to file
+    """
+    fp = open('floats.bin', 'wb')
+    floats.tofile(fp)
+    fp.close()
+
+    floats2 = array('d')
+    fp = open('floats.bin', 'rb')
+    floats2.fromfile(fp, 10**7)
+    fp.close()
+
+
+def memory_view():
+    import array
+    numbers = array.array('h', [-2, -1, 0, 1, 2])
+    memv = memoryview(numbers)
+    print(len(memv), memv[0])
+
+    memv_oct = memv.cast('B')
+    print(memv_oct.tolist())
+    memv_oct[5] = 4
+    print(numbers)
+
+
+def numpy_and_scipy():
+    import numpy as np
+    floats = np.loadtxt('some.txt')
+    floats *= 0.5 #divide by 0.5
+
+    from time import perf_counter as pc
+
+    t0 = pc(); floats /= 3; print(pc() - t0)
+    np.save('floats-10M', floats)
+    floats2 = np.load('floats-10M.npy', 'r+')
+    floats2 *= 6
+
+
+def deque_():
+    from collections import deque
+    dq = deque(range(10), maxlen=10)
+    print(dq)
+    #dq.rotate(3)
+    #print(dq)
+    dq.appendleft(-1)
+    print(dq)
+    dq.extend([11, 22, 33])
+    print(dq)
+    #90 page of book fluent python
+
