@@ -304,4 +304,8 @@ def deque_():
     dq.extend([11, 22, 33])
     print(dq)
     #90 page of book fluent python
+    #string and bytes
+
+
+
 
