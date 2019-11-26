@@ -1,14 +1,12 @@
-#hosts = "C:/Windows/System32/drivers/etc/hosts"
-
 import time
 from datetime import datetime as dt
 
-hosts = 'hosts'
+hosts = "C:/Windows/System32/drivers/etc/hosts"
 redirect = '127.0.0.1'
 website_list = ['www.facebook.com', "www.netflix.com"]
 
 while True:
-    if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year,dt.now().month,dt.now().day,16):
+    if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year,dt.now().month,dt.now().day,20):
         print("RIhanna")
         file = open(hosts, 'r+')
         content = file.read()
@@ -16,7 +14,7 @@ while True:
             if website in  content:
                 pass
             else:
-                file.write(redirect+ ' '+website + '\n')
+                file.write('#           ' + redirect+ ' '+website + '\n')
     else:
         print("Drake")
 
