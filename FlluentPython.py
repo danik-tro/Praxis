@@ -343,7 +343,44 @@ def dict_and_miss():
 
     x = StrKeyDict0([(1,'e'), (2,'d')])
     print(x.get(3))
+
+    import collections
+    # collections.OrderedDict()словарь, который хранит значения в том порядке, в котором добавлялись
+    # collections.ChainMap
+    import builtins
+    pylookup = collections.ChainMap(locals(), globals(), vars(builtins))
+    print(pylookup)
+
+    ct = collections.Counter('abihrgiohgwihog')
+    print(ct)
+    ct.update('ohgeivhwhbwhbwwhbwop')
+    print(ct)
+
+    #Collections.UserDict - создан для создания своих классов путем унаследования
+    class StrKeyDict(collections.UserDict):
+
+        def __missing__(self, key):
+            if isinstance(key, str):
+                raise KeyError(key)
+            return self[str(key)]
+
+        def __contains__(self, key):
+            return str(key) in self.data
+
+        def __setitem__(self, key, item):
+            self.data[str(key)] = item
+        #collections.TransformDict
+    from types import MappingProxyType
+    d = StrKeyDict()
+    d[1] = 'e'
+    d_proxy = MappingProxyType(d)
+    print(d_proxy)
+    
+
+
 dict_and_miss()
+    
+
 
 
 
