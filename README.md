@@ -1,2 +1,1 @@
-# Praxis
-My praxis on different language of programming
+# My projects created by in python
